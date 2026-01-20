@@ -42,7 +42,10 @@ rank = np.arange(n_methods)
 np.random.shuffle(rank)
 data = []
 for i in range(n_methods):
-    method = "method_" + str(i)
+    if i == 0:
+        method = "Proposed"
+    else:
+        method = "Baseline_" + str(i)
     values = np.random.uniform(
         0.25 * (rank[i] + 1), 0.25 * (rank[i] + 2), size=n_samples
     )

@@ -1,43 +1,44 @@
-# Project template
+# M02 Sprint Project
 
-A simple template for sprint projects. Also check out [data science and
-reproducible science cookie
-cutters](https://github.com/audreyr/cookiecutter#data-science).
+> [!NOTE]
+> You have 60 minutes to clean a catastrophic CSV into tidy format while maintaining granular Git history. Then present your approach and results to the class.
+>
 
-## Installation
+## The Challenge
 
-Run the following
+We'll use synthetic datasets in `./data` folder. Your tasks are:
 
-    ./install.sh YOUR_PROJECT_REPO_FOLDER
+1. Create a figure showing the data in `./data/1d-data.csv`. This dataset consists of the effect of a treatment for 10 subjects. Make sure to label your axes and create a non-misleading data. You can choose any appropriate visualization method (e.g., line plot, bar plot, etc.). 
+2. Create a figure showing the data in `./data/2d-data.csv`. This dataset consists 2D measurements of samples. You may choose any appropriate visualization method (e.g., heatmap, contour plot, surface plot, etc.). Make sure to label your axes and create a non-misleading data. 
+3. Create a figure showing the data in `./data/1d-multi-method-data.csv`. This dataset consists of measurements (i.e., "AUC-ROC") of samples using multiple methods. Your goal is to highlight "Proposed" against "Baseline 1" and "Baseline 2", .... "Baseline 9" by using preattentive visual encoding. Make sure to (1) label your axes, (2) create a non-misleading visualizaation, and (3) highlight "Proposed" effectively. 
 
-This script creates the following folders and files. 
+Make atomic commits for each step (you can make multiple commits per step, which is encouraged).
 
-1. `libs` for a software library for the project.
-1. `data` for datasets and scripts for downloading datasets.
-1. `notebooks` for timestamped experiments.
-1. `paper` for manuscripts.
-1. `workflow` for workflow scripts.
-1. `.gitignore` that lists temporary and binary files to ignore (LaTeX, Python, Jupyter, data files, etc. )
-1. `pyproject.toml` for managing Python dependencies using [uv](https://docs.astral.sh/uv/getting-started/installation/).
+## The Rules
+
+- **Time:** 60 minutes of work, followed by presentations.
+- **Version Control:** Every change must be committed and pushed. No batch commits. Your commit messages must explain why you made each change.
+- **Requirements:** Final dataset must be truly tidy. No metadata in data cells, no implicit missing values, no ambiguous column names.
+
+## Evaluation
+
+Judges evaluate three dimensions:
+
+**Visualization Quality (30%):** Are the visualizations clear, non-misleading, and effective? 
+**Git History (20%):** Do commits tell a story? Are they atomic and well-described?
+**Documentation (50%):** Can you clearly explain your visualization strategy and key decisions?
+
+## Submission
+
+Submit the link to your GitHub repository to Brightspace. 
 
 ## Set up
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/). And then create a virtual environment using:
 
-Open `pyproject.toml` in a text editor and change the project name and add your project dependencies or create it from scratch using:
+Open `pyproject.toml` in a text editor and change the project name and add your project dependencies.
 
-```bash 
-uv init
-```
-
-Then, activate the environment by
-
-```bash
-source .venv/bin/activate
-```
-
-Then, install the dependencies by running:
-
+If you want to install a Python package, run:
 
 ```bash 
 uv add <package-name>
@@ -61,3 +62,15 @@ Install `ipykernel` for Jupyter.
 Create a kernel for the virtual environment that you can use in Jupyter lab/notebook.
 
     python -m ipykernel install --user --name project_env_kernel_name
+
+## Kickstarter code
+
+```python 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns   
+# Load the data
+data_table = pd.read_csv('./data/data.csv')
+
+# Your code here
+```
