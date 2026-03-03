@@ -28,7 +28,6 @@ For each dataset (1d-data, 2d-data, 1d-multi-method), create three branches:
 - Commit and push the notes file
 
 **Branch 2: `<dataset>-format`**
-- Branch from `<dataset>-notes` after merging to master
 - Load and inspect the data
 - Clean or transform the data if needed
 - Save formatted data or create data loading functions
@@ -36,57 +35,19 @@ For each dataset (1d-data, 2d-data, 1d-multi-method), create three branches:
 - Push your work
 
 **Branch 3: `<dataset>-viz`**
-- Branch from `<dataset>-format` after merging to master
 - Create the visualization code
 - Generate the final figure
 - Save figure to `./paper/figs/`
 - Commit visualization code and output
 - Push your work
 
-### Example Workflow for 1d-data.csv
-
-```bash
-# Start with notes branch
-git checkout -b 1d-data-notes
-# [Write your notes file]
-git add notes-1d-data.md
-git commit -m "Add analysis notes for 1d treatment data"
-git push -u origin 1d-data-notes
-git checkout master
-git merge 1d-data-notes
-git push
-
-# Continue with formatting branch
-git checkout -b 1d-data-format
-# [Write data loading/formatting code]
-git add notebooks/format_1d_data.ipynb
-git commit -m "Load and validate 1d treatment data structure"
-git commit -m "Verify treatment groups and subject IDs"
-git push -u origin 1d-data-format
-git checkout master
-git merge 1d-data-format
-git push
-
-# Finish with visualization branch
-git checkout -b 1d-data-viz
-# [Create visualization]
-git add notebooks/viz_1d_data.ipynb
-git commit -m "Create bar plot comparing treatment effects"
-git add paper/figs/1d-treatment-effects.png
-git commit -m "Generate final 1d treatment figure"
-git push -u origin 1d-data-viz
-git checkout master
-git merge 1d-data-viz
-git push
-```
-
 ### Complete Branch List
 
 You should create and merge these nine branches in order:
 
-1. `1d-data-notes` → `1d-data-format` → `1d-data-viz`
-2. `2d-data-notes` → `2d-data-format` → `2d-data-viz`
-3. `1d-multi-method-notes` → `1d-multi-method-format` → `1d-multi-method-viz`
+1. `1d-data-notes`, `1d-data-format`, `1d-data-viz`
+2. `2d-data-notes`, `2d-data-format`, `2d-data-viz`
+3. `1d-multi-method-notes`, `1d-multi-method-format`, `1d-multi-method-viz`
 
 ## The Rules
 
@@ -110,7 +71,7 @@ Submit the link to your GitHub repository to Brightspace.
 
 ## Set up
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/). And then create a virtual environment using:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/). 
 
 Open `pyproject.toml` in a text editor and change the project name and add your project dependencies.
 
