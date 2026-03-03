@@ -41,9 +41,7 @@ For each dataset (1d-data, 2d-data, 1d-multi-method), create three branches:
 - Commit visualization code and output
 - Push your work
 
-### Complete Branch List
-
-You should create and merge these nine branches in order:
+You should create and merge these nine branches:
 
 1. `1d-data-notes`, `1d-data-format`, `1d-data-viz`
 2. `2d-data-notes`, `2d-data-format`, `2d-data-viz`
@@ -58,12 +56,13 @@ You should create and merge these nine branches in order:
 
 ## Evaluation
 
-Judges evaluate four dimensions:
-
-**Visualization Quality (25%):** Are the visualizations clear, non-misleading, and effective?
-**Git Branching Workflow (25%):** Did you create and merge the required branches? Are branches named correctly and merged in the right order?
-**Git History (20%):** Do commits tell a story? Are they atomic and well-described?
-**Documentation (30%):** Can you clearly explain your visualization strategy and key decisions in your notes files?
+| Criteria | Level 3 (5–6 points) | Level 2 (1–4 points) | Level 1 (0 points) | Criterion Score |
+|---|---|---|---|---|
+| Task Outcome | Fully addresses the task; works as intended | Solve the core task with minor gaps | Solution missing or fundamentally broken | / 6 |
+| Documentation | Clear explanation of approach, decisions, and how to reproduce | Explains approach; some gaps in reasoning or steps. | Absent or unreadable | / 6 |
+| Git Log | Regular commits with descriptive messages showing progression | Multiple commits; some evidence of iterative work | Single commit or no meaningful history | / 6 |
+| Commits from one person only | Balanced contributions across team members | Uneven but multiple contributors visible | Commits from one person only | / 6 |
+| Submission Format | Matches specified format exactly | Minor deviations from format | Does not follow specified format | / 6 |
 
 ## Submission
 
@@ -111,3 +110,5 @@ data_table = pd.read_csv('./data/data.csv')
 
 # Your code here
 ```
+
+
