@@ -56,13 +56,13 @@ You should create and merge these nine branches:
 
 ## Evaluation
 
-| Criteria | Level 3 (5–6 points) | Level 2 (1–4 points) | Level 1 (0 points) | Criterion Score |
+| Criteria | Level 3 (5–6 pt) | Level 2 (1–4 pt) | Level 1 (0 pt) | Score |
 |---|---|---|---|---|
 | Task Outcome | Fully addresses the task; works as intended | Solve the core task with minor gaps | Solution missing or fundamentally broken | / 6 |
-| Documentation | Clear explanation of approach, decisions, and how to reproduce | Explains approach; some gaps in reasoning or steps. | Absent or unreadable | / 6 |
+| Documentation | Clear explanation of approach, decisions. | Explains approach; some gaps in reasoning or steps. | Absent or unreadable | / 6 |
 | Git Log | Regular commits with descriptive messages showing progression | Multiple commits; some evidence of iterative work | Single commit or no meaningful history | / 6 |
-| Commits from one person only | Balanced contributions across team members | Uneven but multiple contributors visible | Commits from one person only | / 6 |
-| Submission Format | Matches specified format exactly | Minor deviations from format | Does not follow specified format | / 6 |
+| Reproducibility | Provided a script to reproduce the results, along with environment setup instructions. The script works in a different machine. | The script is missing/broken or setup instructions are incomplete, but only minor fixes are needed to make it work. | Reproducing results requires manual steps. Instructions are insufficient for reproducibility. | / 6 |
+| Submission Format | Deliverables are correctly named and placed in the specified folder. | | Does not follow specified format. | / 6 |
 
 ## Submission
 
