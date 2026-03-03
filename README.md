@@ -11,6 +11,7 @@ We'll use synthetic datasets in `./data` folder. Your tasks are:
 1. Create a figure showing the data in `./data/1d-data.csv`. This dataset consists of the effect of a treatment for 10 subjects. Make sure to label your axes and create a non-misleading data. You can choose any appropriate visualization method (e.g., line plot, bar plot, etc.).
 2. Create a figure showing the data in `./data/2d-data.csv`. This dataset consists 2D measurements of samples. You may choose any appropriate visualization method (e.g., heatmap, contour plot, surface plot, etc.). Make sure to label your axes and create a non-misleading data.
 3. Create a figure showing the data in `./data/1d-multi-method-data.csv`. This dataset consists of measurements (i.e., "AUC-ROC") of samples using multiple methods. Your goal is to highlight "Proposed" against "Baseline 1" and "Baseline 2", .... "Baseline 9" by using preattentive visual encoding. Make sure to (1) label your axes, (2) create a non-misleading visualizaation, and (3) highlight "Proposed" effectively.
+4. Create a figure showing the UCI ML hand-written digits dataset in `./data/digits-data.csv` (also available via `sklearn.datasets.load_digits`). This dataset consists of 8×8 pixel images of handwritten digits (0–9) with 64 features per sample. Visualize the data in 2D (e.g., using t-SNE) to show the clustering structure. Color the data points by digit class to reveal the similarity and dissimilarity of digit distributions. No need to perform clustering — use the provided digit labels as class membership.
 
 Make atomic commits for each step (you can make multiple commits per step, which is encouraged).
 
@@ -23,15 +24,18 @@ Your repository must follow this folder structure:
 ├── data/               # Datasets (provided; do not modify)
 │   ├── 1d-data.csv
 │   ├── 2d-data.csv
-│   └── 1d-multi-method-data.csv
+│   ├── 1d-multi-method-data.csv
+│   └── digits-data.csv          # UCI ML hand-written digits (generated via gen-digits-data.py)
 ├── docs/               # Documentation (your notes and write-ups)
 │   ├── notes-1d-data.md
 │   ├── notes-2d-data.md
-│   └── notes-1d-multi-method.md
+│   ├── notes-1d-multi-method.md
+│   └── notes-digits.md
 ├── figs/               # Figures (output from your visualizations)
 │   ├── fig-1d-data.png
 │   ├── fig-2d-data.png
-│   └── fig-1d-multi-method.png
+│   ├── fig-1d-multi-method.png
+│   └── fig-digits.png
 ├── workflow/           # Code (your scripts for data processing and visualization)
 │   ├── ...             # Your Python scripts go here
 │   └── ...
@@ -44,8 +48,8 @@ Your repository must follow this folder structure:
 
 | Deliverable | Location | Filename Convention |
 |---|---|---|
-| Notes for each dataset | `docs/` | `notes-1d-data.md`, `notes-2d-data.md`, `notes-1d-multi-method.md` |
-| Figures for each dataset | `figs/` | `fig-1d-data.png`, `fig-2d-data.png`, `fig-1d-multi-method.png` |
+| Notes for each dataset | `docs/` | `notes-1d-data.md`, `notes-2d-data.md`, `notes-1d-multi-method.md`, `notes-digits.md` |
+| Figures for each dataset | `figs/` | `fig-1d-data.png`, `fig-2d-data.png`, `fig-1d-multi-method.png`, `fig-digits.png` |
 | Visualization/processing scripts | `workflow/` | Your choice (e.g., `viz_1d_data.py`, `format_2d_data.py`) |
 | Automated pipeline script | project root | `run.sh`, `Makefile`, or `Snakefile` (see [Automated Pipeline](#automated-pipeline)) |
 
@@ -76,6 +80,7 @@ You may use one of the following formats:
   uv run python workflow/viz_1d_data.py
   uv run python workflow/viz_2d_data.py
   uv run python workflow/viz_1d_multi_method.py
+  uv run python workflow/viz_digits.py
   ```
 - **`Makefile`**: A Makefile at the project root with a default target that builds all figures.
 - **`Snakefile`**: A Snakemake workflow file at the project root.
@@ -88,7 +93,7 @@ You must use git branches to organize your work. Each dataset requires three seq
 
 ### Branch Structure
 
-For each dataset (1d-data, 2d-data, 1d-multi-method), create three branches:
+For each dataset (1d-data, 2d-data, 1d-multi-method, digits), create three branches:
 
 **Branch 1: `<dataset>-notes`**
 - Document your understanding of the dataset
@@ -109,11 +114,12 @@ For each dataset (1d-data, 2d-data, 1d-multi-method), create three branches:
 - Commit visualization code and output
 - Push your work
 
-You should create and merge these nine branches:
+You should create and merge these twelve branches:
 
 1. `1d-data-notes`, `1d-data-format`, `1d-data-viz`
 2. `2d-data-notes`, `2d-data-format`, `2d-data-viz`
 3. `1d-multi-method-notes`, `1d-multi-method-format`, `1d-multi-method-viz`
+4. `digits-notes`, `digits-format`, `digits-viz`
 
 ## The Rules
 
