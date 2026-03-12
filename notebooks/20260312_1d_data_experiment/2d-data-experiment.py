@@ -138,7 +138,7 @@ def _(df_2d, plt, sns):
     )
 
     g.set_axis_labels('Variable X', 'Variable Y')
-    g.fig.suptitle('Hexbin with marginal histograms overlay contour plot')
+    g.figure.suptitle('Hexbin with marginal histograms overlay contour plot')
     plt.tight_layout()
     plt.show()
     return
