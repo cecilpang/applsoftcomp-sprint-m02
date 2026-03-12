@@ -58,7 +58,7 @@ def _(mo):
 @app.cell
 def _():
     show_fig = True
-    return
+    return (show_fig,)
 
 
 @app.cell
@@ -104,6 +104,42 @@ def _(mo):
     mo.md(r"""
     The swarm plot and statistic summary under log shows the large values in "cases" group are not outliers. So no need to remove outliers under log scale.
     """)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    ## log‑scaled boxplot with swarm overlay
+    """)
+    return
+
+
+@app.cell
+def _(df_1d, plt, show_fig, sns):
+    ax = sns.boxplot(
+        data=df_1d,
+        x='group',
+        y='value',
+        showfliers=True,
+        log_scale=2
+    )
+    sns.swarmplot(
+        data=df_1d,
+        x='group',
+        y='value',
+        color='red',
+        size=5,
+        ax=ax,
+        log_scale=2
+    )
+
+    plt.xlabel('Groups')
+    plt.ylabel('Values (log scale)')
+    plt.title('Treatment effect Cases vs Control (log scaled)')
+    plt.savefig('../../figs/fig-1d-data.png')
+    if show_fig:
+        plt.show()
     return
 
 
