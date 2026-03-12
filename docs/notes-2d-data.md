@@ -22,3 +22,6 @@
 
 **Visualization strategy**
 1. Consider Hexbin Plots that can show the correlation and data density.
+    1. Tried seaborn hexbin with marginal histograms. It shows clear correlation between x and y. Also shows data points are concentrated in two clusters
+2. Tried 2D KDE which clearly shows the correlation and data density.
+3. Consider combine Hexbin plot and 2D KDE

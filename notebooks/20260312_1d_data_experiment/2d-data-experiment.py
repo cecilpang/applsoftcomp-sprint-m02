@@ -68,6 +68,44 @@ def _(df_2d, plt, sns):
 
 
 @app.cell
+def _(mo):
+    mo.md(r"""
+    # Try Hexbin plot
+    """)
+    return
+
+
+@app.cell
+def _(df_2d, sns):
+    # Hexbin plot
+    sns.set_theme(style="white")
+
+    sns.jointplot(
+        data=df_2d,
+        x="x",
+        y="y",
+        kind="hex",
+        cmap="Blues",
+        height=7
+    )
+    return
+
+
+@app.cell
+def _(df_2d, plt, sns):
+    sns.kdeplot(
+        data=df_2d,
+        x="x",
+        y="y",
+        cmap='viridis', 
+        fill=True,
+        levels=10
+    )
+    plt.show()
+    return
+
+
+@app.cell
 def _():
     return
 
