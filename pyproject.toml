@@ -1,5 +1,5 @@
 [project]
-name = "ssie519-sprint-m01"
+name = "ssie519-sprint-m02"
 version = "0.1.0"
 description = "SSIE519 Applied Soft Computing sprint project Module02"
 readme = "README.md"
@@ -20,6 +20,7 @@ dependencies = [
     "marimo>=0.16.1",
     "scikit-learn>=1.0.0",
     "nvitop>=1.5.3",
+    "pyzmq>=27.1.0",
 ]
 
 [project.optional-dependencies]

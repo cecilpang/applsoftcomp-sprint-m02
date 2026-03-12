@@ -13,3 +13,12 @@
 3. Visualization
     1. Visualize data, save figure
     2. Create visualization function
+
+**Data Exploration**:
+1. Data shape 2*20. 
+2. One numberical(float64) column. 
+3. One string column labels whether is case or control data point. Each group has 10 data points. 
+4. There's no nulls
+
+**Visualization strategy**
+1. Given the small data size, consider Beeswarm Plots
