@@ -11,7 +11,15 @@ def _():
     import matplotlib.pyplot as plt
     import seaborn as sns
 
-    return (pd,)
+    return pd, plt, sns
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # Explore data
+    """)
+    return
 
 
 @app.cell
@@ -40,6 +48,28 @@ def _(df_1d):
 @app.cell
 def _(df_1d):
     df_1d['group'].value_counts()
+    return
+
+
+@app.cell
+def _(df_1d):
+    df_1d.groupby('group').describe().apply(lambda x: x.astype(float).map('{:,.2f}'.format))
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # Visualization
+    """)
+    return
+
+
+@app.cell
+def _(df_1d, plt, sns):
+    sns.swarmplot(data=df_1d, x='group', y='value')
+    plt.title('Swarm Plot: Every Point Visible')
+    plt.show()
     return
 
 
