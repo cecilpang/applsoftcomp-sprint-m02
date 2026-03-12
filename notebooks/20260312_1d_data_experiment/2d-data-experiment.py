@@ -106,6 +106,45 @@ def _(df_2d, plt, sns):
 
 
 @app.cell
+def _(mo):
+    mo.md(r"""
+    # Visualization
+    """)
+    return
+
+
+@app.cell
+def _(df_2d, plt, sns):
+    # df has columns x and y
+    sns.set_theme(style="white")
+
+    g = sns.jointplot(
+        data=df_2d,
+        x="x",
+        y="y",
+        kind="hex",
+        cmap="Blues",
+        height=7
+    )
+
+    sns.kdeplot(
+        data=df_2d,
+        x="x",
+        y="y",
+        ax=g.ax_joint,
+        color="red",
+        levels=10,
+        linewidths=1
+    )
+
+    g.set_axis_labels('Variable X', 'Variable Y')
+    g.fig.suptitle('Hexbin with marginal histograms overlay contour plot')
+    plt.tight_layout()
+    plt.show()
+    return
+
+
+@app.cell
 def _():
     return
 
