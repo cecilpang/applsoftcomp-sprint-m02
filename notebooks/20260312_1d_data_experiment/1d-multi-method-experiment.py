@@ -13,7 +13,7 @@ def _():
     import matplotlib.pyplot as plt
     import seaborn as sns
 
-    return (pd,)
+    return pd, plt, sns
 
 
 @app.cell
@@ -42,6 +42,25 @@ def _(df):
 @app.cell
 def _(df):
     df.groupby('method').describe().apply(lambda x: x.astype(float).map('{:,.2f}'.format))
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # Format data
+    """)
+    return
+
+
+@app.cell
+def _(df, plt, sns):
+    plt.figure(figsize=(8, 6))
+    sns.stripplot(data=df, x='method', y='AUCROC', jitter=True, alpha=0.7)
+    plt.xticks(rotation=45)
+    plt.title('AUCROC by Method (jittered)')
+    plt.tight_layout()
+    plt.show()
     return
 
 

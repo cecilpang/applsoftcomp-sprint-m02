@@ -17,7 +17,10 @@
 **Data Exploration and Insights**:
 1. Data shape 2*100. No nulls in the dataset.
 2. Each row capture the AUCROC using specified method. 
-3. There are total 10 different methods: Baseline_1 to Baseline_9 and Proposed. The AUCROC of each method has different mean. Also notice the standard deviation is small, so data points are concentrated.
+3. There are total 10 different methods: Baseline_1 to Baseline_9 and Proposed. Each method has 10 AUCROC values, with different mean. Also notice the standard deviation is small, so data points are concentrated.
+4. The jittered scatter plot validates that the AUCROC values of each method are centered at mean.
 
 **Visualization strategy**
-1. Try scatter plot grouped by method
+1. To highlight the "Proposed" method, make the following enhancements of the jittered scatter plot:
+    1. Ordering methods by mean of AUCROC, and show mean of AUCROC explicitly
+    2. Highlight the "Proposed" method with different color
