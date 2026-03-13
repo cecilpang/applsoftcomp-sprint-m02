@@ -74,6 +74,8 @@ def _(mo):
 
 @app.cell
 def _(df, plt, sns):
+    sns.set_theme(style="white")
+
     order = df.groupby('method')['AUCROC'].mean().sort_values(ascending=False).index
     palette = {m: ('red' if m == 'Proposed' else 'grey') for m in order}
 
@@ -82,9 +84,10 @@ def _(df, plt, sns):
 
     means = df.groupby('method')['AUCROC'].mean().reindex(order)
     plt.scatter(range(len(order)), means, marker='D', s=50, c=[palette[m] for m in order], edgecolor='black', zorder=5)
-
+    plt.xlabel('Methods (sorted by mean AUC-ROC)')
+    plt.ylabel('AUC-ROC')
     plt.xticks(rotation=45)
-    plt.title('AUCROC by Method (jittered)')
+    plt.title('AUC-ROC by Method: Proposed vs Baselines')
     plt.tight_layout()
     plt.show()
     return
