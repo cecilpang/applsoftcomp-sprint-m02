@@ -13,7 +13,7 @@ def _():
     from sklearn.decomposition import PCA
     from sklearn.manifold import TSNE
 
-    return mo, pd
+    return PCA, mo, pd
 
 
 @app.cell
@@ -62,11 +62,41 @@ def _(df):
     y = df["digit"]
 
     X.shape, y.value_counts().sort_index()
+    return (X,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # PCA
+    """)
+    return
+
+
+@app.cell
+def _(PCA, X):
+    pca_2d = PCA(n_components=2, random_state=42)
+    X_pca_2d = pca_2d.fit_transform(X)
+
+    explained_variance_2d = pca_2d.explained_variance_ratio_.sum()
+    print('64 -> 2 explained_variance: ', explained_variance_2d)
+    return
+
+
+@app.cell
+def _(PCA, X):
+    pca = PCA(n_components=30, random_state=42)
+    X_pca = pca.fit_transform(X)
+
+    explained_variance = pca.explained_variance_ratio_.sum()
+    print('64 -> 30 explained_variance: ', explained_variance)
     return
 
 
 @app.cell
 def _():
+
+
     return
 
 

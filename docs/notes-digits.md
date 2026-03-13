@@ -22,6 +22,9 @@
     2. Each sample is an 8 x 8 image flattened into 64 pixel-intensity features. 
     3. One column 'digit' stores the class label in 0-9.
     4. Each digit has around 180 samples 
+2. Applied PCA from 64 to 2 vs from 64 to 30. 
+    1. 64 -> 2 explained_variance:  0.29
+    2. 64 -> 30 explained_variance:  0.96
 
 **Visualization strategy**
 1. Split the data into features X and labels y.
