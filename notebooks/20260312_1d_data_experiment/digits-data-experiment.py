@@ -13,7 +13,7 @@ def _():
     from sklearn.decomposition import PCA
     from sklearn.manifold import TSNE
 
-    return PCA, mo, pd
+    return PCA, TSNE, mo, pd, plt, sns
 
 
 @app.cell
@@ -62,7 +62,7 @@ def _(df):
     y = df["digit"]
 
     X.shape, y.value_counts().sort_index()
-    return (X,)
+    return X, y
 
 
 @app.cell
@@ -80,6 +80,14 @@ def _(PCA, X):
 
     explained_variance_2d = pca_2d.explained_variance_ratio_.sum()
     print('64 -> 2 explained_variance: ', explained_variance_2d)
+    return (X_pca_2d,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # PCA + t-SNE
+    """)
     return
 
 
@@ -90,13 +98,108 @@ def _(PCA, X):
 
     explained_variance = pca.explained_variance_ratio_.sum()
     print('64 -> 30 explained_variance: ', explained_variance)
+    return (X_pca,)
+
+
+@app.cell
+def _(TSNE, X_pca):
+    # PCA: 64 -> 30 + t-SNE: 30 -> 2
+    tsne = TSNE(
+        n_components=2,
+        perplexity=30,
+        init="pca",
+        learning_rate="auto",
+        random_state=42,
+    )
+    X_tsne = tsne.fit_transform(X_pca)
+
+    return (X_tsne,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # Plot 2D
+    """)
+    return
+
+
+@app.cell
+def _(X_pca_2d, pd, y):
+    pca_df = pd.DataFrame(
+        {
+            "component_1": X_pca_2d[:, 0],
+            "component_2": X_pca_2d[:, 1],
+            "digit": y,
+        }
+    )
+    pca_df.head()
+    return (pca_df,)
+
+
+@app.cell
+def _(pca_df, plt, sns):
+    sns.set_theme(style="white", context="talk")
+
+    sns.scatterplot(
+        data=pca_df,
+        x="component_1",
+        y="component_2",
+        hue="digit",
+        palette="tab10",
+        s=28,
+        alpha=0.85,
+        linewidth=0,
+    )
+    plt.title("PCA (64 -> 2)")
+    plt.xlabel("Component 1")
+    plt.ylabel("Component 2")
+
+    plt.legend(title="Digit", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
+    return
+
+
+@app.cell
+def _(X_tsne, pd, y):
+    tsne_df = pd.DataFrame(
+        {
+            "component_1": X_tsne[:, 0],
+            "component_2": X_tsne[:, 1],
+            "digit": y,
+        }
+    )
+    tsne_df.head()
+    return (tsne_df,)
+
+
+@app.cell
+def _(plt, sns, tsne_df):
+    sns.set_theme(style="white", context="talk")
+
+    sns.scatterplot(
+        data=tsne_df,
+        x="component_1",
+        y="component_2",
+        hue="digit",
+        palette="tab10",
+        s=28,
+        alpha=0.85,
+        linewidth=0,
+    )
+    plt.title("PCA + t-SNE (64 -> 30 -> 2)")
+    plt.xlabel("Component 1")
+    plt.ylabel("Component 2")
+
+    plt.legend(title="Digit", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
     return
 
 
 @app.cell
 def _():
-
-
     return
 
 

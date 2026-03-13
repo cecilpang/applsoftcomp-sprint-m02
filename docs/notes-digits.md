@@ -2,20 +2,6 @@
 
 **Context**: This dataset consists of 8×8 pixel images of handwritten digits (0–9) with 64 features per sample.
 
-**Plan**:
-1. Explore data.
-    1. Document insights and understanding of the dataset.
-    2. Describing the data structure, key observations, and visualization strategy
-2. Data formatting
-    1. Load and inspect
-    2. Clean/ transform in needed
-    3. Save tranformed data and create loading function
-3. Visualization
-    1. Visualize the data in 2D (e.g., using t-SNE) to show the clustering structure
-    2. Color the data points by digit class to reveal the similarity and dissimilarity of digit distributions.
-    3. No need to perform clustering — use the provided digit labels as class membership.
-    4. Create visualization function
-
 **Data Exploration and Insights**:
 1. Data shape 1797*65, contains:
     1. 1797 samples, 
@@ -32,3 +18,8 @@
    1. Only PCA from 64 features to 2D
    2. First PCA from 64 to 30, to make t-SNE faster and stable. Then t-SNE from 30 to 2D
 3. Plot each 2D embeddings with color mapping for digits 0-9.
+
+**What To Expect On This Dataset**:
+- `PCA (2D)` usually shows broad structure and some class overlap.
+- `t-SNE (2D)` often produces the cleanest apparent clusters, especially for digits like `0` and `1`.
+- Digits such as `3`, `5`, `8`, and `9` may still appear near one another because their stroke patterns overlap.∏
