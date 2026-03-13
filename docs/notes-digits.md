@@ -18,8 +18,3 @@
    1. Only PCA from 64 features to 2D
    2. First PCA from 64 to 30, to make t-SNE faster and stable. Then t-SNE from 30 to 2D
 3. Plot each 2D embeddings with color mapping for digits 0-9.
-
-**What To Expect On This Dataset**:
-- `PCA (2D)` usually shows broad structure and some class overlap.
-- `t-SNE (2D)` often produces the cleanest apparent clusters, especially for digits like `0` and `1`.
-- Digits such as `3`, `5`, `8`, and `9` may still appear near one another because their stroke patterns overlap.∏

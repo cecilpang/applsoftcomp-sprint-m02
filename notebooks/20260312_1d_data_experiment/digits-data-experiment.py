@@ -199,6 +199,50 @@ def _(plt, sns, tsne_df):
 
 
 @app.cell
+def _(pca_df, plt, sns, tsne_df):
+    sns.set_theme(style="white", context="talk")
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5), sharex=False, sharey=False)
+
+    dfs = [
+        ("PCA (64 -> 2)", pca_df),
+        ("PCA + t-SNE (64 -> 30 -> 2)", tsne_df),
+    ]
+
+    for ax, (title, dfi) in zip(axes, dfs):
+        sns.scatterplot(
+            data=dfi,
+            x="component_1",
+            y="component_2",
+            hue="digit",
+            palette="tab10",
+            s=28,
+            alpha=0.85,
+            linewidth=0,
+            legend=ax is axes[1],
+            ax=ax,
+        )
+        ax.set_title(title)
+        ax.set_xlabel("Component 1")
+        ax.set_ylabel("Component 2")
+
+    handles, labels = axes[1].get_legend_handles_labels()
+    if handles:
+        axes[1].legend(
+            handles,
+            labels,
+            title="Digit",
+            bbox_to_anchor=(1.05, 1.05),
+            loc="upper left",
+        )
+
+    fig.suptitle("2D plots of UCI Handwritten Digits", y=1.02)
+    plt.tight_layout()
+    plt.show()
+    return
+
+
+@app.cell
 def _():
     return
 
