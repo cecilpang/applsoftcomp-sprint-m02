@@ -65,6 +65,32 @@ def _(df, plt, sns):
 
 
 @app.cell
+def _(mo):
+    mo.md(r"""
+    # Visualization
+    """)
+    return
+
+
+@app.cell
+def _(df, plt, sns):
+    order = df.groupby('method')['AUCROC'].mean().sort_values(ascending=False).index
+    palette = {m: ('red' if m == 'Proposed' else 'grey') for m in order}
+
+    plt.figure(figsize=(8, 5))
+    sns.stripplot(data=df, x='method', y='AUCROC', order=order, jitter=True, alpha=0.7, hue='method', palette=palette)
+
+    means = df.groupby('method')['AUCROC'].mean().reindex(order)
+    plt.scatter(range(len(order)), means, marker='D', s=50, c=[palette[m] for m in order], edgecolor='black', zorder=5)
+
+    plt.xticks(rotation=45)
+    plt.title('AUCROC by Method (jittered)')
+    plt.tight_layout()
+    plt.show()
+    return
+
+
+@app.cell
 def _():
     return
 
