@@ -57,8 +57,7 @@ def _(mo):
 
 @app.cell
 def _(df):
-    feature_columns = [column for column in df.columns if column != "digit"]
-    X = df[feature_columns]
+    X = df.drop(columns="digit")
     y = df["digit"]
 
     X.shape, y.value_counts().sort_index()
@@ -202,7 +201,7 @@ def _(plt, sns, tsne_df):
 def _(pca_df, plt, sns, tsne_df):
     sns.set_theme(style="white", context="talk")
 
-    fig, axes = plt.subplots(1, 2, figsize=(10, 5), sharex=False, sharey=False)
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
 
     dfs = [
         ("PCA (64 -> 2)", pca_df),
@@ -236,7 +235,7 @@ def _(pca_df, plt, sns, tsne_df):
             loc="upper left",
         )
 
-    fig.suptitle("2D plots of UCI Handwritten Digits", y=1.02)
+    fig.suptitle("2D plots of UCI Handwritten Digits", y=0.95)
     plt.tight_layout()
     plt.show()
     return
